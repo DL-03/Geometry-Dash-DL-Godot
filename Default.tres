@@ -1,0 +1,14 @@
+[gd_resource type="Theme" format=2]
+
+[resource]
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_disabled = Color( 0.411765, 0.764706, 0.0862745, 0.2 )
+Button/colors/font_color_hover = Color( 0.0588235, 0.905882, 0.113725, 1 )
+Button/colors/font_color_pressed = Color( 0.521569, 0.0745098, 0.0745098, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = null
+Button/styles/pressed = null

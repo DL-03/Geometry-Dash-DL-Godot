@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Resources/Objects/Nblock1.png" type="Texture" id=1]
+[ext_resource path="res://Edit_Object_Button.gd" type="Script" id=2]
+
+[node name="Edit_Object_Button" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = -25.0
+margin_top = -25.0
+margin_right = 25.0
+margin_bottom = 25.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ico" type="Sprite" parent="."]
+texture = ExtResource( 1 )

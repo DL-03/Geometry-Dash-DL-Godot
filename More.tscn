@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://More.gd" type="Script" id=1]
+[ext_resource path="res://Window_Import_Editor.gd" type="Script" id=3]
+
+[node name="More" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Window_Import_Editor" type="FileDialog" parent="."]
+margin_left = 300.0
+margin_top = 200.0
+margin_right = 800.0
+margin_bottom = 650.0
+window_title = "Открыть файл"
+resizable = true
+mode = 0
+access = 2
+filters = PoolStringArray( "*.json" )
+current_dir = "/Godot Projects/Geometry Dash DL Godot"
+current_path = "/Godot Projects/Geometry Dash DL Godot/"
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -1405.51
+margin_top = -864.508
+margin_right = 2415.49
+margin_bottom = 1368.49
+color = Color( 0.054902, 0.4, 0.8, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="file_selected" from="Window_Import_Editor" to="Window_Import_Editor" method="_on_Window_Import_Editor_file_selected"]

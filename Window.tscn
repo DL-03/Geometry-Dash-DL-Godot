@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Close.gd" type="Script" id=1]
+[ext_resource path="res://Save.gd" type="Script" id=2]
+[ext_resource path="res://PUSAB.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 18
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 3 )
+
+[node name="Window" type="Node2D"]
+
+[node name="Save" type="FileDialog" parent="."]
+margin_left = 300.0
+margin_top = 200.0
+margin_right = 800.0
+margin_bottom = 650.0
+window_title = "Сохранить файл"
+access = 2
+filters = PoolStringArray( "*.json" )
+current_dir = "/Godot Projects/Geometry Dash DL Godot"
+current_path = "/Godot Projects/Geometry Dash DL Godot/"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Close" type="WindowDialog" parent="."]
+margin_left = 416.589
+margin_top = 224.287
+margin_right = 721.589
+margin_bottom = 374.287
+custom_fonts/title_font = SubResource( 1 )
+window_title = "Extra Save"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Save" type="Button" parent="Close"]
+margin_left = 20.0
+margin_top = 100.0
+margin_right = 95.0
+margin_bottom = 130.0
+custom_fonts/font = SubResource( 2 )
+text = "Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cancel" type="Button" parent="Close"]
+margin_left = 115.0
+margin_top = 100.0
+margin_right = 190.0
+margin_bottom = 130.0
+custom_fonts/font = SubResource( 2 )
+text = "Cancel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="No" type="Button" parent="Close"]
+margin_left = 210.0
+margin_top = 100.0
+margin_right = 285.0
+margin_bottom = 130.0
+custom_fonts/font = SubResource( 2 )
+text = "No"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Close"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 285.0
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 2 )
+text = "Extra Save"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="confirmed" from="Save" to="Save" method="_on_Save_confirmed"]

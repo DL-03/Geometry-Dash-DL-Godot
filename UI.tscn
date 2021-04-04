@@ -1,0 +1,230 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Resources/Menu/Play.png" type="Texture" id=1]
+[ext_resource path="res://UI.gd" type="Script" id=2]
+[ext_resource path="res://Resources/Menu/More.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Buttons/close.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Menu/Menu Button Small.png" type="Texture" id=5]
+[ext_resource path="res://PUSAB.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Editor_Object_List.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Control.gd" type="Script" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 17
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 18
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 6 )
+
+[node name="UI" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Menu" type="Node2D" parent="."]
+visible = false
+
+[node name="Play" type="Button" parent="Menu"]
+margin_left = 466.836
+margin_top = 276.095
+margin_right = 591.836
+margin_bottom = 401.095
+icon = ExtResource( 1 )
+flat = true
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="More" type="Button" parent="Menu"]
+margin_left = 618.388
+margin_top = 306.815
+margin_right = 718.388
+margin_bottom = 406.815
+icon = ExtResource( 3 )
+flat = true
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Import" type="Button" parent="Menu"]
+margin_left = 361.827
+margin_top = 304.385
+margin_right = 461.827
+margin_bottom = 404.385
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Menu/Import"]
+position = Vector2( 50, 50 )
+scale = Vector2( 0.55, 0.55 )
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="Menu/Import"]
+margin_left = -2.0
+margin_top = -2.0
+margin_right = 98.0
+margin_bottom = 98.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.541176 )
+text = "IMPORT"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Close" type="Button" parent="Menu"]
+margin_right = 75.0
+margin_bottom = 75.0
+icon = ExtResource( 4 )
+flat = true
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Game" type="Node2D" parent="."]
+visible = false
+
+[node name="Close" type="Button" parent="Game"]
+margin_right = 75.0
+margin_bottom = 75.0
+icon = ExtResource( 4 )
+flat = true
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="More" type="Node2D" parent="."]
+visible = false
+
+[node name="Close" type="Button" parent="More"]
+margin_right = 75.0
+margin_bottom = 75.0
+icon = ExtResource( 4 )
+flat = true
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="New" type="Button" parent="More"]
+margin_left = 235.107
+margin_top = 144.719
+margin_right = 485.107
+margin_bottom = 204.719
+custom_fonts/font = SubResource( 2 )
+text = "New"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Open" type="Button" parent="More"]
+margin_left = 240.134
+margin_top = 218.267
+margin_right = 490.134
+margin_bottom = 278.267
+custom_fonts/font = SubResource( 2 )
+text = "Open"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Editor" type="Node2D" parent="."]
+
+[node name="Close" type="Button" parent="Editor"]
+margin_right = 75.0
+margin_bottom = 75.0
+icon = ExtResource( 4 )
+flat = true
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Save_As" type="Button" parent="Editor"]
+margin_left = 141.592
+margin_top = 19.8639
+margin_right = 261.592
+margin_bottom = 59.8639
+custom_fonts/font = SubResource( 3 )
+text = "Save As"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveB" type="Button" parent="Editor"]
+margin_left = 282.862
+margin_top = 19.8639
+margin_right = 402.862
+margin_bottom = 59.8639
+custom_fonts/font = SubResource( 3 )
+text = "Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Editor_Object_List" parent="Editor" instance=ExtResource( 7 )]
+
+[node name="Control" type="Node2D" parent="Editor"]
+visible = false
+script = ExtResource( 8 )
+
+[node name="up" type="Button" parent="Editor/Control"]
+margin_left = -25.0
+margin_top = -75.0
+margin_right = 25.0
+margin_bottom = -25.0
+text = "Up"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="down" type="Button" parent="Editor/Control"]
+margin_left = -25.0
+margin_top = 25.0
+margin_right = 25.0
+margin_bottom = 75.0
+text = "Down"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="left" type="Button" parent="Editor/Control"]
+margin_left = -75.0
+margin_top = -25.0
+margin_right = -25.0
+margin_bottom = 25.0
+text = "Left"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="right" type="Button" parent="Editor/Control"]
+margin_left = 25.0
+margin_top = -25.0
+margin_right = 75.0
+margin_bottom = 25.0
+text = "Right"
+__meta__ = {
+"_edit_use_anchors_": false
+}
