@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Close.gd" type="Script" id=1]
 [ext_resource path="res://Save.gd" type="Script" id=2]
 [ext_resource path="res://PUSAB.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Settings.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 use_filter = true
@@ -10,6 +11,23 @@ font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 18
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
@@ -25,8 +43,8 @@ margin_bottom = 650.0
 window_title = "Сохранить файл"
 access = 2
 filters = PoolStringArray( "*.json" )
-current_dir = "/Godot Projects/Geometry Dash DL Godot"
-current_path = "/Godot Projects/Geometry Dash DL Godot/"
+current_dir = "/"
+current_path = "/"
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -86,6 +104,47 @@ custom_fonts/font = SubResource( 2 )
 text = "Extra Save"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings" type="WindowDialog" parent="."]
+margin_left = 227.545
+margin_top = 76.3275
+margin_right = 527.545
+margin_bottom = 326.328
+custom_fonts/title_font = SubResource( 5 )
+window_title = "Settings"
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Language" type="Node2D" parent="Settings"]
+position = Vector2( 150, 125 )
+
+[node name="Label" type="Label" parent="Settings/Language"]
+margin_left = -75.0
+margin_top = -55.0
+margin_right = 75.0
+margin_bottom = -5.0
+custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="List" type="OptionButton" parent="Settings/Language"]
+margin_left = -75.0
+margin_top = 5.0
+margin_right = 75.0
+margin_bottom = 55.0
+custom_fonts/font = SubResource( 3 )
+text = "eu"
+align = 1
+items = [ "eu", null, false, 0, null, "ru", null, false, 1, null ]
+selected = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }

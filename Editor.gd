@@ -8,7 +8,7 @@ onready var mouse = get_node("/root/Main/Vars").mouse
 
 var buildO
 var code
-var xpp
+var xpp = 0
 var DeleteO
 onready var objectT = get_node("/root/Main/Vars").objectT
 
@@ -16,6 +16,26 @@ func _ready():
 	get_node("/root/Main/UI/Editor/Close").connect("pressed", self, "Close")
 	get_node("/root/Main/UI/Editor/Save_As").connect("pressed", self, "Save_As")
 	get_node("/root/Main/UI/Editor/SaveB").connect("pressed", self, "SaveB")
+	get_node("/root/Main/UI/Editor/Rot/rotm").connect("pressed", self, "rotm")
+	get_node("/root/Main/UI/Editor/Rot/rotp").connect("pressed", self, "rotp")
+	get_node("/root/Main/UI/Editor/Delete").connect("pressed", self, "Delete")
+	get_node("/root/Main/UI/Editor/Play").connect("pressed", self, "Play")
+
+func Play():
+	visible = false
+	get_node("/root/Main/Game").code = code
+	get_node("/root/Main/Game").lvl = null
+	get_node("/root/Main/Game").edit = true
+	get_node("/root/Main/Game").part = 1
+	get_node("/root/Main/Game").visible = true
+func Delete():
+	buildO = "Delete"
+func rotm():
+	Rot -= 90
+func rotp():
+	Rot += 90
+
+
 
 func ret():
 	var path = lvl
@@ -73,15 +93,19 @@ func rot(var type, var node, var x, var y):
 	if type == "sprite":
 		get_node(node).position.x = x
 		get_node(node).position.y = y
-
+var os
 func _process(delta):
 	if Rot > 360:
 		Rot = 90
 	if Rot < 0:
 		Rot = 270
-	get_node("/root/Main/UI/Editor/Editor_Object_List/ColorRect/rot").text = "Rot: " + str(Rot)
+	get_node("/root/Main/UI/Editor/Rot/rot").text = "Rot: " + str(Rot)
 	mouse = get_node("/root/Main/Vars").mouse
 	window = get_node("/root/Main/Vars").window
+	os = OS.get_name()
+	rot("rect", "/root/Main/UI/Editor/Play", get_node("/root/Main/Camera2D").position.x - window[0] * get_node("/root/Main/Camera2D").zoom.x/2 + 80, get_node("/root/Main/Camera2D").position.y - window[1]*get_node("/root/Main/Camera2D").zoom.y/2)
+	get_node("/root/Main/UI/Editor/Play").rect_scale.x = get_node("/root/Main/Camera2D").zoom.x
+	get_node("/root/Main/UI/Editor/Play").rect_scale.y = get_node("/root/Main/Camera2D").zoom.y
 	rot("rect", "/root/Main/UI/Editor/Close", get_node("/root/Main/Camera2D").position.x - window[0] * get_node("/root/Main/Camera2D").zoom.x/2, get_node("/root/Main/Camera2D").position.y - window[1]*get_node("/root/Main/Camera2D").zoom.y/2)
 	get_node("/root/Main/UI/Editor/Close").rect_scale.x = get_node("/root/Main/Camera2D").zoom.x
 	get_node("/root/Main/UI/Editor/Close").rect_scale.y = get_node("/root/Main/Camera2D").zoom.y
@@ -91,9 +115,25 @@ func _process(delta):
 	rot("rect", "/root/Main/UI/Editor/SaveB", get_node("/root/Main/Camera2D").position.x + window[0] * get_node("/root/Main/Camera2D").zoom.x/2 - 330, get_node("/root/Main/Camera2D").position.y - window[1]*get_node("/root/Main/Camera2D").zoom.y/2+15)
 	get_node("/root/Main/UI/Editor/SaveB").rect_scale.x = get_node("/root/Main/Camera2D").zoom.x
 	get_node("/root/Main/UI/Editor/SaveB").rect_scale.y = get_node("/root/Main/Camera2D").zoom.y
-	rot("sprite", "/root/Main/UI/Editor/Control", get_node("/root/Main/Camera2D").position.x - window[0] * get_node("/root/Main/Camera2D").zoom.x/2 + 125, get_node("/root/Main/Camera2D").position.y + window[1]*get_node("/root/Main/Camera2D").zoom.y/2 - 125)
+	if os == "Windows" or os == "OSX":
+		get_node("/root/Main/UI/Editor/Control").visible = false
+	elif os == "Android":
+		get_node("/root/Main/UI/Editor/Control").visible = true
+	rot("sprite", "/root/Main/UI/Editor/Control", get_node("/root/Main/Camera2D").position.x - window[0] * get_node("/root/Main/Camera2D").zoom.x/2 + 150, get_node("/root/Main/Camera2D").position.y + window[1]*get_node("/root/Main/Camera2D").zoom.y/2 - 150)
 	get_node("/root/Main/UI/Editor/Control").scale.x = get_node("/root/Main/Camera2D").zoom.x
 	get_node("/root/Main/UI/Editor/Control").scale.y = get_node("/root/Main/Camera2D").zoom.y
+	if os == "Windows" or os == "OSX":
+		rot("sprite", "/root/Main/UI/Editor/Rot", get_node("/root/Main/Camera2D").position.x + window[0] * get_node("/root/Main/Camera2D").zoom.x/2 - 140, get_node("/root/Main/Camera2D").position.y + window[1]*get_node("/root/Main/Camera2D").zoom.y/2 - 125)
+	elif os == "Android":
+		rot("sprite", "/root/Main/UI/Editor/Rot", get_node("/root/Main/Camera2D").position.x + window[0] * get_node("/root/Main/Camera2D").zoom.x/2 - 140, get_node("/root/Main/Camera2D").position.y + window[1]*get_node("/root/Main/Camera2D").zoom.y/2 - 100)
+	get_node("/root/Main/UI/Editor/Rot").scale.x = get_node("/root/Main/Camera2D").zoom.x
+	get_node("/root/Main/UI/Editor/Rot").scale.y = get_node("/root/Main/Camera2D").zoom.y
+	if os == "Windows" or os == "OSX":
+		rot("rect", "/root/Main/UI/Editor/Delete", get_node("/root/Main/Camera2D").position.x - window[0] * get_node("/root/Main/Camera2D").zoom.x/2 + 75, get_node("/root/Main/Camera2D").position.y + window[1]*get_node("/root/Main/Camera2D").zoom.y/2 - 175)
+	elif os == "Android":
+		rot("rect", "/root/Main/UI/Editor/Delete", get_node("/root/Main/Camera2D").position.x + window[0] * get_node("/root/Main/Camera2D").zoom.x/2 - 230, get_node("/root/Main/Camera2D").position.y + window[1]*get_node("/root/Main/Camera2D").zoom.y/2 - 235)
+	get_node("/root/Main/UI/Editor/Delete").rect_scale.x = get_node("/root/Main/Camera2D").zoom.x
+	get_node("/root/Main/UI/Editor/Delete").rect_scale.y = get_node("/root/Main/Camera2D").zoom.y
 	if visible == true and part == 1:
 		ret()
 	if visible == false:

@@ -39,13 +39,8 @@ func _process(delta):
 
 
 
-func _on_Delete_pressed():
-	get_node("/root/Main/Editor").buildO = "Delete"
 
 
-func _on_rotm_pressed():
-	get_node("/root/Main/Editor").Rot -= 90
 
 
-func _on_rotp_pressed():
-	get_node("/root/Main/Editor").Rot += 90
+

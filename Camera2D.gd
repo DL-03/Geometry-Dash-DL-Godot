@@ -8,8 +8,8 @@ func _process(delta):
 		current = true
 		zoom.x = 1
 		zoom.y = 1
-		if get_node("/root/Main/Game/Player").position.x > get_node("/root/Main/Game").xpp - (1025/2):
-			position.x = get_node("/root/Main/Game").xpp - (1025/2)
+		if get_node("/root/Main/Game/Player").position.x > get_node("/root/Main/Game").xpp - (window[0]/2):
+			position.x = get_node("/root/Main/Game").xpp - (window[0]/2)
 		else:
 			position.x = get_node("/root/Main/Game/Player").position.x
 		position.y = get_node("/root/Main/Game/Player").position.y - 120

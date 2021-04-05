@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Menu.gd" type="Script" id=1]
+[ext_resource path="res://PUSAB.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Resources/logo.png" type="Texture" id=3]
 [ext_resource path="res://PUSAB.tres" type="DynamicFont" id=5]
 [ext_resource path="res://PUSAB.otf" type="DynamicFontData" id=6]
@@ -11,19 +12,19 @@
 
 [sub_resource type="DynamicFont" id=1]
 use_filter = true
-font_data = ExtResource( 6 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
-font_data = ExtResource( 6 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
-font_data = ExtResource( 6 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 30
@@ -126,8 +127,8 @@ resizable = true
 mode = 0
 access = 2
 filters = PoolStringArray( "*.json" )
-current_dir = "/Godot Projects/Geometry Dash DL Godot"
-current_path = "/Godot Projects/Geometry Dash DL Godot/"
+current_dir = "/"
+current_path = "/"
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false

@@ -13,6 +13,10 @@
 [node name="Main" type="Node2D"]
 script = ExtResource( 3 )
 
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+script = ExtResource( 6 )
+
 [node name="Vars" parent="." instance=ExtResource( 4 )]
 
 [node name="Menu" parent="." instance=ExtResource( 2 )]
@@ -30,7 +34,3 @@ visible = false
 [node name="Window" parent="." instance=ExtResource( 9 )]
 
 [node name="UI" parent="." instance=ExtResource( 8 )]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
-script = ExtResource( 6 )

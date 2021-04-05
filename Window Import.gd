@@ -17,4 +17,5 @@ func _on_Window_Import_file_selected(path):
 	get_node("/root/Main/Menu").visible = false
 	get_node("/root/Main/Game").visible = true
 	get_node("/root/Main/Game").lvl = path
+	get_node("/root/Main/Game").edit = false
 	get_node("/root/Main/Game").part = 1

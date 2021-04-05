@@ -16,8 +16,8 @@ resizable = true
 mode = 0
 access = 2
 filters = PoolStringArray( "*.json" )
-current_dir = "/Godot Projects/Geometry Dash DL Godot"
-current_path = "/Godot Projects/Geometry Dash DL Godot/"
+current_dir = "/"
+current_path = "/"
 script = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="."]

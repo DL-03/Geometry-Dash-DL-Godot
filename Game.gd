@@ -1,6 +1,6 @@
 extends Node2D
 
-
+var edit = false
 var lvl
 var part = 0
 onready var cam = get_node("/root/Main/Camera2D")
@@ -13,10 +13,16 @@ func Close():
 
 func _ready():
 	get_node("/root/Main/UI/Game/Close").connect("pressed", self, "Close")
+	get_node("/root/Main/UI/Game/Edit").connect("pressed", self, "Edit")
 
+func Edit():
+	get_node("/root/Main/Editor").visible = true
+	get_node("/root/Main/Editor").code = code
+	visible = false
 
+	
 
-var xpp
+var xpp = 0
 var code
 
 func ret():
@@ -63,7 +69,10 @@ func ret():
 		enemy.img = Temp[0]
 		add_child(enemy)
 	
-	xpp = xp.max() + 1000
+	if len(xp) == 0:
+		xpp = 1000
+	else:
+		xpp = xp.max() + 1000
 
 	get_node("Player").Mode = code["Mode"]
 	
@@ -113,13 +122,18 @@ func rot(var type, var node, var x, var y):
 
 func _process(delta):
 	window = get_node("/root/Main/Vars").window
-	rot("rect", "/root/Main/UI/Game/Close", get_node("/root/Main/Camera2D").position.x - window[0] * get_node("/root/Main/Camera2D").zoom.x/2, get_node("/root/Main/Camera2D").position.y - window[1]*get_node("/root/Main/Camera2D").zoom.y/2)
-	get_node("/root/Main/UI/Game/Close").rect_scale.x = get_node("/root/Main/Camera2D").zoom.x
-	get_node("/root/Main/UI/Game/Close").rect_scale.y = get_node("/root/Main/Camera2D").zoom.y
+	
 	if visible == true and part == 1:
 		ret()
 	if visible == false:
 		code = null
+	rot("rect", "/root/Main/UI/Game/Close", get_node("/root/Main/Camera2D").position.x - window[0] * get_node("/root/Main/Camera2D").zoom.x/2, get_node("/root/Main/Camera2D").position.y - window[1]*get_node("/root/Main/Camera2D").zoom.y/2)
+	get_node("/root/Main/UI/Game/Close").rect_scale.x = get_node("/root/Main/Camera2D").zoom.x
+	get_node("/root/Main/UI/Game/Close").rect_scale.y = get_node("/root/Main/Camera2D").zoom.y
+	get_node("/root/Main/UI/Game/Edit").visible = edit
+	rot("rect", "/root/Main/UI/Game/Edit", get_node("/root/Main/Camera2D").position.x - window[0] * get_node("/root/Main/Camera2D").zoom.x/2 + 80, get_node("/root/Main/Camera2D").position.y - window[1]*get_node("/root/Main/Camera2D").zoom.y/2)
+	get_node("/root/Main/UI/Game/Edit").rect_scale.x = get_node("/root/Main/Camera2D").zoom.x
+	get_node("/root/Main/UI/Game/Edit").rect_scale.y = get_node("/root/Main/Camera2D").zoom.y
 		
 		
 
